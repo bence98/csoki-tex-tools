@@ -2,8 +2,13 @@
 \ProvidesPackage{csokitools}[2022/06/02 Csoki's TeX Tools]
 
 \RequirePackage{graphicx}
+\RequirePackage{listings}
 \RequirePackage{amsfonts,amsmath,amssymb}
 \RequirePackage[utf8]{inputenc}
+
+%%%%%%%%%%%%%%%%%%%%%%
+% Symbols & markup
+%%%%%%%%%%%%%%%%%%%%%%
 
 % Quantors
 \newcommand\A\forall
@@ -21,11 +26,39 @@
 \newcommand\W{\mathbb{W}}
 
 % Other symbols
-%\define\->\rightarrow
+\newcommand\thus\Rightarrow
 \newcommand\vfi\varphi
-\newcommand\Sum\Sigma
-\newcommand\Prod\Pi
+\newcommand\eps\varepsilon
 
 % Matrices
 \newcommand{\mtx}[1]{\underline{\underline{#1}}}
 \newcommand{\declmtx}[2]{\left[\begin{array}{#1}#2\end{array}\right]}
+\newcommand{\detmtx}[2]{\left|\begin{array}{#1}#2\end{array}\right|}
+
+% Bracketed unary operators
+\providecommand{\abs}[1]{\left| #1 \right| }
+\providecommand{\floor}[1]{\left \lfloor #1 \right \rfloor }
+\providecommand{\ceil}[1]{\left \lceil #1 \right \rceil }
+\providecommand{\angbr}[1]{\left \langle #1 \right \rangle }
+
+%%%%%%%%%%%%%%%%%%%%%%
+% Auto-labelling stuff
+%%%%%%%%%%%%%%%%%%%%%%
+
+% Redefinable parameters
+\providecommand{\figurewidth}{300pt}
+\providecommand\see[1]{(lásd #1)}
+
+% Figure with label
+%   usage: \mkfig{filename}{directory path}{caption}
+\newcommand{\mkfig}[3]{\begin{figure}
+		\centering\includegraphics[width=\figurewidth]{#2/#1}
+		\caption{#3}
+		\label{fig:#1}
+\end{figure}}
+% Listing with label
+%   usage: \mklst{filename}{directory path}{language}
+\newcommand{\mklst}[3]{\subsection{\texttt{#1}}
+	\label{sec:file-#1}
+	\lstinputlisting[language=#3]{#2/#1}}
+\newcommand{\fref}[1]{\texttt{#1}\see{ \ref{sec:file-#1}}}
