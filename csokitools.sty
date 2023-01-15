@@ -5,6 +5,7 @@
 \RequirePackage{listings}
 \RequirePackage{amsfonts,amsmath,amssymb}
 \RequirePackage[utf8]{inputenc}
+\RequirePackage{hyperref}
 
 %%%%%%%%%%%%%%%%%%%%%%
 % Symbols & markup
@@ -59,6 +60,11 @@
 \providecommand{\od}[1]{{\text{d} #1}}
 \providecommand{\pdfrac}[2]{\frac{\pd{#1}}{\pd{#2}}}
 \providecommand{\odfrac}[2]{\frac{\od{#1}}{\od{#2}}}
+
+% Misc formatting
+\providecommand{\email}[1]{\href{mailto:#1}{\texttt{#1}}}
+\providecommand{\bvec}[1]{\mathbf{\vec{#1}}}
+\providecommand{\textoverline}[1]{$\overline{\mbox{#1}}$}
 
 %%%%%%%%%%%%%%%%%%%%%%
 % Auto-labelling stuff
