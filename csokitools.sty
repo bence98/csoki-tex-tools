@@ -42,6 +42,7 @@
 % Matrices
 \newcommand{\mtx}[1]{\underline{\underline{#1}}}
 \newcommand{\declmtx}[2]{\left[\begin{array}{#1}#2\end{array}\right]}
+\newcommand{\declmtxs}[2]{\declmtx{*{#1}{c}}{#2}}
 \newcommand{\detmtx}[2]{\left|\begin{array}{#1}#2\end{array}\right|}
 
 % Bracketed unary operators
@@ -58,8 +59,12 @@
 % Differential equations
 \providecommand{\pd}[1]{{\partial #1}}
 \providecommand{\od}[1]{{\text{d} #1}}
+\providecommand{\pdn}[2]{{\partial^{#2} #1}}
+\providecommand{\odn}[2]{{\text{d}^{#2} #1}}
 \providecommand{\pdfrac}[2]{\frac{\pd{#1}}{\pd{#2}}}
 \providecommand{\odfrac}[2]{\frac{\od{#1}}{\od{#2}}}
+\providecommand{\pdfracn}[3]{\frac{\pdn{#1}{#3}}{\pd{#2}^{#3}}}
+\providecommand{\odfracn}[3]{\frac{\odn{#1}{#3}}{\od{#2}^{#3}}}
 
 % Euler's formula
 \providecommand{\imagunit}{j}
