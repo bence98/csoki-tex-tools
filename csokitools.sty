@@ -7,6 +7,9 @@
 \RequirePackage[utf8]{inputenc}
 \RequirePackage{hyperref}
 
+\DeclareOption{renew}{\def\cst@renew{1}}
+\ProcessOptions\relax
+
 %%%%%%%%%%%%%%%%%%%%%%
 % Symbols & markup
 %%%%%%%%%%%%%%%%%%%%%%
@@ -20,11 +23,20 @@
 \newcommand\Z{\mathbb{Z}}
 \newcommand\Q{\mathbb{Q}}
 \newcommand\R{\mathbb{R}}
-\newcommand\C{\mathbb{C}}
+%\C is Cyrillic double grave in XeLaTeX's version of hyperref
+\newcommand\Cplx{\mathbb{C}}
+\ifdefined\C
+	\ifdefined\cst@renew
+		\renewcommand{\C}{\Cplx}
+	\fi
+\else
+	\let\C\Cplx
+\fi
 \newcommand\F{\mathbb{F}}
-\newcommand\U{\mathbb{U}}
-\newcommand\V{\mathbb{V}}
-\newcommand\W{\mathbb{W}}
+%\U is Cyrillic breve in XeLaTeX's version of hyperref
+\newcommand\BU{\mathbb{U}}
+\newcommand\BV{\mathbb{V}}
+\newcommand\BW{\mathbb{W}}
 
 % Probability theory
 % \P is the paragraph sign
