@@ -6,6 +6,7 @@
 \RequirePackage{amsfonts,amsmath,amssymb}
 \RequirePackage[utf8]{inputenc}
 \RequirePackage{hyperref}
+\RequirePackage{fp}
 
 \DeclareOption{renew}{\def\cst@renew{1}}
 \ProcessOptions\relax
@@ -88,6 +89,20 @@
 \providecommand{\email}[1]{\href{mailto:#1}{\texttt{#1}}}
 \providecommand{\bvec}[1]{\mathbf{\vec{#1}}}
 \providecommand{\textoverline}[1]{\(\overline{\mbox{#1}}\)}
+
+%%%%%%%%%%%%%%%%%%%%%%
+% Calculating values
+%%%%%%%%%%%%%%%%%%%%%%
+
+% mil <-> mm conversion
+% Cause for some reason, EE is still largely stuck in Imperial...
+\newcommand{\cst@onemil}{0.0254}
+\newcommand{\cst@mmsmils}[2]{\(#1~mm\) (\(#2~mil\))}
+\newcommand{\cst@miltomm}[1]{\FPeval{cst@mms}{round((#1)*\cst@onemil, 3)}}
+\newcommand{\cst@mmtomil}[1]{\FPeval{cst@mils}{round((#1)/\cst@onemil, 1)}}
+
+\newcommand{\milinmm}[1]{\cst@miltomm{#1}\cst@mmsmils{\cst@mms}{#1}}
+\newcommand{\mmtomil}[1]{\cst@mmtomil{#1}\cst@mmsmils{#1}{\cst@mils}}
 
 %%%%%%%%%%%%%%%%%%%%%%
 % Auto-labelling stuff
