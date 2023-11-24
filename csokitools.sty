@@ -125,3 +125,7 @@
 	\label{sec:file-#1}
 	\lstinputlisting[language=#3]{#2/#1}}
 \newcommand{\fref}[1]{\texttt{#1}\see{ \ref{sec:file-#1}}}
+
+% Additional reference to a footnote
+% https://tex.stackexchange.com/a/35044
+\newcommand\footnoteref[1]{\protected@xdef\@thefnmark{\ref{#1}}\@footnotemark}
