@@ -91,13 +91,26 @@
 \providecommand{\textoverline}[1]{\(\overline{\mbox{#1}}\)}
 
 %%%%%%%%%%%%%%%%%%%%%%
+% Values with units
+%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\cst@units}[2]{\mbox{#2~#1}}
+\newcommand{\cst@defineunits}[1]{\expandafter\newcommand\csname #1\endcsname[1]{\cst@units{#1}{##1}}}
+
+\cst@defineunits{dB}
+\cst@defineunits{MHz}
+\cst@defineunits{GHz}
+\cst@defineunits{mm}
+\cst@defineunits{mil}
+
+%%%%%%%%%%%%%%%%%%%%%%
 % Calculating values
 %%%%%%%%%%%%%%%%%%%%%%
 
 % mil <-> mm conversion
 % Cause for some reason, EE is still largely stuck in Imperial...
 \newcommand{\cst@onemil}{0.0254}
-\newcommand{\cst@mmsmils}[2]{\(#1~mm\) (\(#2~mil\))}
+\newcommand{\cst@mmsmils}[2]{\mm{#1} (\mil{#2})}
 \newcommand{\cst@miltomm}[1]{\FPeval{cst@mms}{round((#1)*\cst@onemil, 3)}}
 \newcommand{\cst@mmtomil}[1]{\FPeval{cst@mils}{round((#1)/\cst@onemil, 1)}}
 
