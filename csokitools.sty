@@ -132,6 +132,12 @@
 		\caption{#3}
 		\label{fig:#1}
 \end{figure}}
+\newcommand{\mkfigh}[3]{\begin{figure}[h]
+		\centering\includegraphics[width=\figurewidth]{#2/#1}
+		\caption{#3}
+		\label{fig:#1}
+\end{figure}}
+
 % Listing with label
 %   usage: \mklst{filename}{directory path}{language}
 \newcommand{\mklst}[3]{\subsection{\texttt{#1}}
